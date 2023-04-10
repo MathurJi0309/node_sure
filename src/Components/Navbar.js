@@ -3,7 +3,6 @@ import { useNavigate } from "react-router";
 
 const Navbar = (props) => {
   const [input, setInput] = useState("");
-  const [param, setParam] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -13,9 +12,13 @@ const Navbar = (props) => {
   const handleClick = (e) => {
     e.preventDefault();
     props.search(input);
-    console.log(param);
     navigate("/");
   };
+
+  const handleCliick=()=>{
+    navigate('/');
+    props.update(true);
+}
 
   return (
     <div  className="position-fixed" style={{width:'100vw',zIndex:'300'}}>
@@ -23,12 +26,12 @@ const Navbar = (props) => {
 
       <nav className="navbar navbar-light bg-light  d-flex justify-content-between" >
         
-      <div style={{color:'darkBlue' ,cursor:'pointer'}} onClick={()=>{navigate('/')}}><h2>Node_Sure</h2></div> 
+      <div style={{color:'darkBlue' ,cursor:'pointer'}} onClick={handleCliick}><h2>Node_Sure</h2></div> 
         <form className="form-inline">
           <input
             className="form-control mr-sm-2"
             type="search"
-            placeholder={param}
+            placeholder="Search Here..."
             aria-label="Search"
             name={input}
             onChange={handleChange}

@@ -5,35 +5,84 @@ import axios from "axios";
 import ProductList from "./Components/ProductList";
 import Loder from "./Components/Loder";
 import Navbar from "./Components/Navbar";
-import { colors } from "@mui/material";
+import CircularProgress from '@mui/material/CircularProgress';
+
+import Productdetail from "./Components/Productdetail";
 
 function App() {
   const [loading, setLoding] = useState(false);
   const [products, setProducts] = useState({});
-  const fetchproducts = () => {
-    fetch("https://dummyjson.com/products")
-      .then((res) => res.json())
-      .then((data) => {console.log("awfawtatfsefsf",data)
-    setProducts(data)});
+  const [index, setIndex] = useState(true);
+  const [prodetail, setProdetail] = useState({});
+  const [id, setId] = useState();
+  const fetchproduct = async () => {
+    setLoding(true);
+    const response = await axios.get("https://dummyjson.com/products");
+
+    console.log("i am first", response);
+    setProducts(response.data);
+    setLoding(false);
+    setIndex(false);
   };
   useEffect(() => {
-    fetchproducts();
+    fetchproduct();
+    console.log("hi i a m here", products);
   }, []);
-  console.log("ha le luyiya",products);
-  const search=(param)=>{
-    fetch(`https://dummyjson.com/products/search?q=${param}`)
-.then(res => res.json())
-.then(console.log);
-  }
+  console.log("ha le luyiya", products);
+  const search = (param) => {
+    const featchsearch = async (param) => {
+      const response = await axios.get(
+        `https://dummyjson.com/products/search?q=${param}`
+      );
+      setProducts(response.data);
+      console.log("hi i am param", products);
+    };
+    featchsearch(param);
+  };
+  const detail = (id) => {
+    setIndex(true);
+    const pro = products.products.filter((item) => {
+      if (item.id === id) {
+        return item;
+      }
+    });
+    setProdetail(pro[0]);
+    console.log("pro 48", pro[0]);
+    console.log("prodetail", prodetail);
+    const fetchdetail = async (id) => {
+      const response = await axios.get(`https://dummyjson.com/products/${id}`);
+      console.log("i am in the pro", response.data);
+      setProdetail(response.data);
+    };
+    fetchdetail(id);
+    setId(id);
+  };
+
   return (
     <div>
-      
+      {loading ?    (<div className="d-flex justify-content-center align-items-center loader">
+        <CircularProgress color="secondary" />
+        </div>):
+        (
+
       <Router>
-        <Navbar search={search}/>
+        <Navbar search={search} />
         <Routes>
-          <Route excat path='/' element={<ProductList products={products}/>}/>
+          <Route
+            excat
+            path="/"
+            element={
+              !loading && <ProductList products={products} detail={detail} />
+            }
+          />
+          <Route
+            excat
+            path={`/${id}`}
+            element={<Productdetail product={prodetail} />}
+          />
         </Routes>
       </Router>
+        )}
     </div>
   );
 }

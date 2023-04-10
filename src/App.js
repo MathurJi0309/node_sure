@@ -59,7 +59,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div >
       {loading ?    (<div className="d-flex justify-content-center align-items-center loader">
         <CircularProgress color="secondary" />
         </div>):
@@ -67,12 +67,14 @@ function App() {
 
       <Router>
         <Navbar search={search} />
+        <div style={{paddingTop:'50px'}}>
+
         <Routes>
           <Route
             excat
             path="/"
             element={
-              !loading && <ProductList products={products} detail={detail} />
+              !loading && <ProductList products={products} detail={detail}  />
             }
           />
           <Route
@@ -81,6 +83,7 @@ function App() {
             element={<Productdetail product={prodetail} />}
           />
         </Routes>
+        </div>
       </Router>
         )}
     </div>

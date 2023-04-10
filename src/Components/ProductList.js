@@ -6,7 +6,7 @@ const ProductList = (props) => {
     props.detail(id);
   };
   return (
-    <div>
+    <div >
       {props.products.products?.map((data, index) => {
         console.log(data.brand);
         return <Product product={data} key={index} details={details} />;

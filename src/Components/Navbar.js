@@ -18,8 +18,12 @@ const Navbar = (props) => {
   };
 
   return (
-    <div>
-      <nav className="navbar navbar-light bg-light">
+    <div  className="position-fixed" style={{width:'100vw',zIndex:'300'}}>
+
+
+      <nav className="navbar navbar-light bg-light  d-flex justify-content-between" >
+        
+      <div style={{color:'darkBlue' ,cursor:'pointer'}} onClick={()=>{navigate('/')}}><h2>Node_Sure</h2></div> 
         <form className="form-inline">
           <input
             className="form-control mr-sm-2"

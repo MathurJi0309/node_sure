@@ -17,7 +17,7 @@ code {
   margin-top: 12px;
 }
 
-@media screen and (max-width:500px){
+@media screen and (max-width:600px){
  .pegintaion{
   margin-top: 50px;
  }
@@ -33,3 +33,13 @@ code {
  }
 }
 
+
+@media screen and (max-width:480px){
+  .pegintaion{
+    margin-top: 100px;
+   }
+   .imges{
+    margin-top: 100px;
+   }
+  
+}

@@ -21,4 +21,15 @@ code {
  .pegintaion{
   margin-top: 50px;
  }
+ .imges{
+  margin-top: 50px;
+ }
+ .imgp{
+  display: flex;
+  justify-content: space-around;
+ }
+ .img:hover{
+  scale: 2;
+ }
 }
+

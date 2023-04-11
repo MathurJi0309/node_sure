@@ -4,11 +4,11 @@ import React from "react";
 
 const Carosals = ({ imgs }) => {
   return (
-    <div className="ecommerce-gallery">
-      <div className="row py-3 shadow-5">
+    <div className="ecommerce-gallery imges">
+      <div className="row py-3 shadow-5 imgp">
         {imgs.map((item) => (
           <div className="col-2 mt-1 mx-auto">
-            <img src={item} alt="Gallery image 1" className="active w-100" />
+            <img src={item} alt="Gallery image 1" className="active w-100 img" />
           </div>
         ))}
       </div>

@@ -2,36 +2,52 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import CircularProgress from "@mui/material/CircularProgress";
 import ProductList from "./Components/ProductList";
 import Navbar from "./Components/Navbar";
-import CircularProgress from "@mui/material/CircularProgress";
-
-import Productdetail from "./Components/Productdetail";
 import Footer from "./Components/Footer";
+import Productdetail from "./Components/Productdetail";
+
 
 function App() {
+  const baseURL="https://dummyjson.com/products"
   const [loading, setLoding] = useState(false);
   const [products, setProducts] = useState({});
   const [prodetail, setProdetail] = useState({});
   const [id, setId] = useState();
   let realproduct = {};
-  const fetchproduct = async () => {
-    setLoding(true);
-    const response = await axios.get("https://dummyjson.com/products", {
+
+
+  const fetch=async()=>{
+    const response = await axios.get(`${baseURL}`, {
       crossdomain: true,
     });
     realproduct = response.data;
     setProducts(response.data);
     setLoding(false);
+  }
+
+
+  
+  const fetchproduct = async () => {
+    console.log("data fetching........")
+    setLoding(true);
+   fetch();
+    
   };
   useEffect(() => {
     fetchproduct();
   }, []);
+
+
+
   const search = (param) => {
+
     const featchsearch = async (param) => {
+      console.log("data Searching........")
       setLoding(true);
       const response = await axios.get(
-        `https://dummyjson.com/products/search?q=${param}`
+        `${baseURL}/search?q=${param}`
       );
       if (param !== "") {
         setProducts(response.data);
@@ -39,10 +55,13 @@ function App() {
         setProducts(realproduct);
       }
       setLoding(false);
-
     };
     featchsearch(param);
   };
+
+
+
+
   const detail = (id) => {
     const pro = products.products.filter((item) => {
       if (item.id === id) {
@@ -51,22 +70,23 @@ function App() {
     });
     setProdetail(pro[0]);
     const fetchdetail = async (id) => {
-      const response = await axios.get(`https://dummyjson.com/products/${id}`);
+      const response = await axios.get(`${baseURL}/${id}`);
       setProdetail(response.data);
     };
     fetchdetail(id);
     setId(id);
   };
 
+
+
   const update = async (x) => {
+    console.log("data fetching........")
     setLoding(x);
-    const response = await axios.get("https://dummyjson.com/products", {
-      crossdomain: true,
-    });
-    realproduct = response.data;
-    setProducts(response.data);
-    setLoding(false);
+    fetch()
   };
+
+
+
   return (
     <div>
       {loading ? (

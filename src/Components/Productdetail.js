@@ -1,7 +1,9 @@
 import React from "react";
+import Carosal from "./Carosals";
 const Productdetail = ({ product }) => {
   return (
     <div>
+      <Carosal imgs={product.images} classNameName="h-0.75 w-0.25" />
       <section style={{ backgroundColor: "#eee" }}>
         <div className="container py-5 w-0.50 h-0.75">
           <div className="row justify-content-center">

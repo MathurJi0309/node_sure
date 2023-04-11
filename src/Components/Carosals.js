@@ -1,5 +1,7 @@
 import React from "react";
 
+// ........................................................code for the images ....................................................................
+
 const Carosals = ({ imgs }) => {
   return (
     <div className="ecommerce-gallery">

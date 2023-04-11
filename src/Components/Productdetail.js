@@ -1,5 +1,9 @@
 import React from "react";
 import Carosal from "./Carosals";
+
+// ........................................................code for the Product detail page ....................................................................
+
+
 const Productdetail = ({ product }) => {
   return (
     <div>

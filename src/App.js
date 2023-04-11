@@ -8,6 +8,8 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Productdetail from "./Components/Productdetail";
 
+// ........................................................code for the App ....................................................................
+
 
 function App() {
   const baseURL="https://dummyjson.com/products"
@@ -16,6 +18,9 @@ function App() {
   const [prodetail, setProdetail] = useState({});
   const [id, setId] = useState();
   let realproduct = {};
+
+// ........................................................code for the fetch data ....................................................................
+
 
 
   const fetch=async()=>{
@@ -28,7 +33,7 @@ function App() {
   }
 
 
-  
+
   const fetchproduct = async () => {
     console.log("data fetching........")
     setLoding(true);
@@ -38,6 +43,9 @@ function App() {
   useEffect(() => {
     fetchproduct();
   }, []);
+
+
+// ........................................................code for the search in list ....................................................................
 
 
 
@@ -60,6 +68,8 @@ function App() {
   };
 
 
+// ........................................................code for the fetch detail ....................................................................
+
 
 
   const detail = (id) => {
@@ -78,6 +88,8 @@ function App() {
   };
 
 
+// ........................................................code for the update list by clicking on the name....................................................................
+
 
   const update = async (x) => {
     console.log("data fetching........")
@@ -88,7 +100,7 @@ function App() {
 
 
   return (
-    <div>
+    <div >
       {loading ? (
         <div className="d-flex flex-col justify-content-center align-items-center loader">
           <CircularProgress color="secondary" />

@@ -1,8 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+// ........................................................code for the single product design....................................................................
+
+
 const Product = (props) => {
   const navigate = useNavigate();
+
+
+// ........................................................code for the handle click of detail button ....................................................................
 
 
   const handlClick = (id) => {
@@ -11,7 +17,7 @@ const Product = (props) => {
   };
 
   return (
-    <div>
+    <div style={{marginTop:'10px'}}>
       <section style={{ backgroundColor: "#eee" }}>
         <div className="container pt-2">
           <div className="row justify-content-center">

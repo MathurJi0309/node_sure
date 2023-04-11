@@ -1,8 +1,11 @@
 import React from "react";
 
+// ........................................................Footer ....................................................................
+
+
 const Footer = () => {
   return (
-    <div style={{}}>
+    <div >
       <footer className="bg-light text-center text-lg-start">
         <div className="text-center p-3 text-light bg-dark">
           © 2020 Copyright:

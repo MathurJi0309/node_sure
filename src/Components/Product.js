@@ -18,7 +18,7 @@ const Product = (props) => {
 
   return (
     <div style={{marginTop:'10px'}}>
-      <section style={{ backgroundColor: "#eee" }}>
+      <section>
         <div className="container pt-2">
           <div className="row justify-content-center">
             <div className="col-md-12 col-xl-10">

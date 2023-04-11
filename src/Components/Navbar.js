@@ -49,7 +49,7 @@ const Navbar = (props) => {
         </div>
         <form className="form-inline">
           <input
-            className="form-control "
+            className="form-control mx-1"
             type="search"
             placeholder="Search Here..."
             aria-label="Search"
